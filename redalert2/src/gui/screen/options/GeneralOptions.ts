@@ -12,7 +12,6 @@ export class GeneralOptions {
     rightClickMove: BoxedVar<boolean>;
     rightClickScroll: BoxedVar<boolean>;
     mouseAcceleration: BoxedVar<boolean>;
-    reverseTouchScroll: BoxedVar<boolean>;
     graphics: GraphicsOptions;
     performance: PerformanceOptions;
     constructor() {
@@ -23,12 +22,11 @@ export class GeneralOptions {
         this.rightClickMove = new BoxedVar(false);
         this.rightClickScroll = new BoxedVar(true);
         this.mouseAcceleration = new BoxedVar(true);
-        this.reverseTouchScroll = new BoxedVar(false);
         this.graphics = new GraphicsOptions();
         this.performance = new PerformanceOptions();
     }
     unserialize(data: string): this {
-        const [t, i, r, s, a, n, o, l, p, q] = data.split(",");
+        const [t, i, r, s, a, n, o, l, p] = data.split(",");
         this.scrollRate.value = Number(t);
         if (i !== undefined) {
             this.flyerHelper.value = Number(i) as FlyerHelperMode;
@@ -52,9 +50,6 @@ export class GeneralOptions {
             this.mouseAcceleration.value = Boolean(Number(l));
         }
         this.performance.unserialize(p);
-        if (q !== undefined) {
-            this.reverseTouchScroll.value = Boolean(Number(q));
-        }
         return this;
     }
     serialize(): string {
@@ -68,7 +63,6 @@ export class GeneralOptions {
             Number(this.targetLines.value),
             Number(this.mouseAcceleration.value),
             this.performance.serialize(),
-            Number(this.reverseTouchScroll.value),
         ].join(",");
     }
 }

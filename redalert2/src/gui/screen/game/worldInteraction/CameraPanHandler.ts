@@ -16,7 +16,7 @@ export class CameraPanHandler {
     private paused = false;
     private stickyMode = false;
     private lastUpdate?: number;
-    constructor(private readonly cameraPan: any, private readonly pointer: any, private readonly panRate: any, private readonly freeCamera: any, private readonly worldScene: any, private readonly reverseTouchScroll?: any) { }
+    constructor(private readonly cameraPan: any, private readonly pointer: any, private readonly panRate: any, private readonly freeCamera: any, private readonly worldScene: any) { }
     private readonly onFrame = (time: number): void => {
         if (this.paused ||
             !this.isPanning ||
@@ -76,9 +76,8 @@ export class CameraPanHandler {
             // Pan space is zoom-1 screen px; divide the finger delta by zoom so
             // the map content tracks the fingers 1:1 at any zoom level.
             const zoom = Math.max(0.1, this.worldScene?.cameraZoom?.getZoom?.() ?? 1);
-            const direction = this.reverseTouchScroll?.value ? -1 : 1;
-            this.panVector.x = (direction * (this.startPos.x - pointer.x)) / zoom;
-            this.panVector.y = (direction * (this.startPos.y - pointer.y)) / zoom;
+            this.panVector.x = (this.startPos.x - pointer.x) / zoom;
+            this.panVector.y = (this.startPos.y - pointer.y) / zoom;
         }
         else {
             const rate = (this.panRate.value / 5) * 100;
