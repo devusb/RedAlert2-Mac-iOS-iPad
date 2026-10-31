@@ -29,10 +29,3 @@ The general options panel (748px of content in a 568px container on the Duo's
 inner display, 870px in 568px on desktop) now scrolls. Tightening spacing or
 hiding rows on short layouts was not chosen because the content exceeds the
 container by ~30% and would still overflow on shorter screens.
-
-## Reverse touch scroll is an option, off by default
-
-Two-finger drag pans with the map content following the fingers. Reversed
-panning, where the camera moves in the drag direction, is available through
-the Reverse Touch Scroll option in General options on touch devices. The
-default is unchanged.
