@@ -37,7 +37,7 @@ export class WorldInteractionFactory {
         const customScrollHandler = new CustomScrollHandler(mapScrollHandler);
         const minimapHandler = new MinimapHandler(this.minimap, map, shroud, worldScene, new MapPanningHelper(map));
         const targetLines = new TargetLines(this.localPlayer, this.unitSelection, worldScene.camera, this.debugPaths, this.generalOptions.targetLines);
-        const worldInteraction = new WorldInteraction(worldScene, pointer, pointer.pointerEvents, new CameraPanHandler(worldScene.cameraPan, pointer, this.generalOptions.scrollRate, this.freeCamera, worldScene), mapScrollHandler, mapHoverHandler, tooltipHandler, entityIntersectHelper, unitSelectionHandler, defaultActionHandler, keyboardHandler, arrowScrollHandler, customScrollHandler, minimapHandler, worldScene.cameraZoom, this.document, renderer, targetLines, this.generalOptions.rightClickMove, this.generalOptions.rightClickScroll, this.battleControlApi);
+        const worldInteraction = new WorldInteraction(worldScene, pointer, pointer.pointerEvents, new CameraPanHandler(worldScene.cameraPan, pointer, this.generalOptions.scrollRate, this.freeCamera, worldScene, this.generalOptions.reverseTouchScroll), mapScrollHandler, mapHoverHandler, tooltipHandler, entityIntersectHelper, unitSelectionHandler, defaultActionHandler, keyboardHandler, arrowScrollHandler, customScrollHandler, minimapHandler, worldScene.cameraZoom, this.document, renderer, targetLines, this.generalOptions.rightClickMove, this.generalOptions.rightClickScroll, this.battleControlApi);
         const debugRoot = ((window as any).__ra2debug ??= {});
         debugRoot.entityIntersectHelper = entityIntersectHelper;
         debugRoot.mapTileIntersectHelper = mapTileIntersectHelper;
